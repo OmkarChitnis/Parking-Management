@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>Parking Management</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  
+    <servlet>
+        <servlet-name>A_Login</servlet-name>
+        <servlet-class>A_Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>U_Login</servlet-name>
+        <servlet-class>U_Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Welcome</servlet-name>
+        <servlet-class>Welcome</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangeParkingStatus</servlet-name>
+        <servlet-class>ChangeParkingStatus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Show_Parking_Status</servlet-name>
+        <servlet-class>Show_Parking_Status</servlet-class>
+    </servlet>
+    
+    
+    
+    
+    <servlet-mapping>
+        <servlet-name>A_Login</servlet-name>
+        <url-pattern>/A_Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>U_Login</servlet-name>
+        <url-pattern>/U_Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Welcome</servlet-name>
+        <url-pattern>/Welcome</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeParkingStatus</servlet-name>
+        <url-pattern>/ChangeParkingStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Show_Parking_Status</servlet-name>
+        <url-pattern>/Show_Parking_Status</url-pattern>
+    </servlet-mapping>
+    
+  
+  
+</web-app>
