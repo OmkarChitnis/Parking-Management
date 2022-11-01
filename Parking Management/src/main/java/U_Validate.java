@@ -3,6 +3,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpSession;
+
 public class U_Validate {
 	public static boolean checkUser(String user,String pass) 
     {

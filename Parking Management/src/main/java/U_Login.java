@@ -31,25 +31,18 @@ public class U_Login extends HttpServlet {
 		
 		response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+        out.println("<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css\" integrity=\"sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh\" crossorigin=\"anonymous\">");
         String user = request.getParameter("username");
         String pass = request.getParameter("password");
         
         if(U_Validate.checkUser(user, pass))
         {
-        	HttpSession sess = request.getSession();
-        	sess.setAttribute("username", user);
-        	sess.setAttribute("password", pass);
-        	Cookie c = new Cookie("name", user);
-        	Cookie cpass = new Cookie("pass",pass);
-        	response.addCookie(c);
-        	response.addCookie(cpass);
             RequestDispatcher rs = request.getRequestDispatcher("u_home.html");
             rs.forward(request, response);
         }
         else
         {
-           out.println("<div class='not_found' style='width:30rem; color: #E31A1A;'>Username or Password incorrect</div>");
+           out.println("<div class='not_found card-header' style='width:30rem; color: #E31A1A;'>Username or Password incorrect</div>");
            RequestDispatcher rs = request.getRequestDispatcher("index.html");
            rs.include(request, response);
         }
