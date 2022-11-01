@@ -39,7 +39,4 @@ public class Welcome extends HttpServlet{
         		+ "  </div>\r\n"
         		+ "</div>");
       }
-	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
-	}
 }
