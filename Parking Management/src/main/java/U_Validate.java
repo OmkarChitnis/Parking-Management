@@ -14,7 +14,6 @@ public class U_Validate {
 
             //loading drivers for mysql
             Class.forName("com.mysql.jdbc.Driver");
-
             //creating connection with the database
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingmanagement","root","Stormbreaker0811");
             PreparedStatement ps = con.prepareStatement("select * from user where u_username=? and u_password=?");
