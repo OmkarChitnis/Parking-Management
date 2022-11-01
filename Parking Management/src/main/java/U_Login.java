@@ -2,13 +2,10 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 /**
  * Servlet implementation class U_Login
@@ -40,12 +37,19 @@ public class U_Login extends HttpServlet {
         
         if(U_Validate.checkUser(user, pass))
         {
+        	HttpSession sess = request.getSession();
+        	sess.setAttribute("username", user);
+        	sess.setAttribute("password", pass);
+        	Cookie c = new Cookie("name", user);
+        	Cookie cpass = new Cookie("pass",pass);
+        	response.addCookie(c);
+        	response.addCookie(cpass);
             RequestDispatcher rs = request.getRequestDispatcher("u_home.html");
             rs.forward(request, response);
         }
         else
         {
-           out.println("Username or Password incorrect");
+           out.println("<div class='not_found' style='width:30rem; color: #E31A1A;'>Username or Password incorrect</div>");
            RequestDispatcher rs = request.getRequestDispatcher("index.html");
            rs.include(request, response);
         }
