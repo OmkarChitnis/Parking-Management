@@ -13,7 +13,7 @@ public class A_Validate {
             Class.forName("com.mysql.jdbc.Driver");
 
             //creating connection with the database
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingmanagement","root","mysql");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingmanagement","root","Stormbreaker0811");
             PreparedStatement ps = con.prepareStatement("select * from admin where a_username=? and a_password=?");
             ps.setString(1, user);
             ps.setString(2, pass);

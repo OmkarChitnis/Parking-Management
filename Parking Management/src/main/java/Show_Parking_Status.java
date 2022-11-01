@@ -41,7 +41,7 @@ public class Show_Parking_Status extends HttpServlet {
         try 
         {  
             Class.forName("com.mysql.jdbc.Driver");  
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingmanagement","root","mysql");  
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingmanagement","root","Stormbreaker0811");  
               
             java.sql.Statement stmt = con.createStatement();  
             ResultSet rs = stmt.executeQuery("select parking_name, parking_capacity, parking_used, parking_counter from parkingspots");  
