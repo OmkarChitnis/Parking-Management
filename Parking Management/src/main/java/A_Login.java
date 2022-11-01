@@ -6,9 +6,11 @@ import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class A_Login
@@ -41,6 +43,7 @@ public class A_Login extends HttpServlet {
         {
             RequestDispatcher rs = request.getRequestDispatcher("a_home.html");
             rs.forward(request, response);
+             
         }
         else
         {
