@@ -24,10 +24,8 @@ public class Welcome extends HttpServlet{
         HttpSession sess = request.getSession();
     	sess.setAttribute("username", user);
     	sess.setAttribute("password", pass);
-    	Cookie c = new Cookie("name", user);
-    	Cookie cpass = new Cookie("pass",pass);
+    	Cookie c = new Cookie(user, pass);
     	response.addCookie(c);
-    	response.addCookie(cpass);
         out.println("<div class=\"toast\" role=\"alert\" aria-live=\"assertive\" aria-atomic=\"true\">\r\n"
         		+ "  <div class=\"toast-header\">\r\n"
         		+ "    <strong class=\"me-auto\">Welcome</strong>\r\n"
