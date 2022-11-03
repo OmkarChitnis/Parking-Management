@@ -43,7 +43,7 @@ public class U_Login extends HttpServlet {
         else
         {
            out.println("<div class='not_found card-header' style='width:30rem; color: #E31A1A;'>Username or Password incorrect</div>");
-           RequestDispatcher rs = request.getRequestDispatcher("index.html");
+           RequestDispatcher rs = request.getRequestDispatcher("u_login.html");
            rs.include(request, response);
         }
 		
