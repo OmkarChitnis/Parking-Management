@@ -6,25 +6,12 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-
-/**
- * Servlet implementation class U_Login
- */
 @WebServlet("/U_Login")
 public class U_Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public U_Login() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -35,6 +22,10 @@ public class U_Login extends HttpServlet {
         String pass = request.getParameter("password");
         if(U_Validate.checkUser(user, pass))
         {
+        	Cookie user_cookie = new Cookie("user",user);
+        	Cookie pass_cookie = new Cookie("pass",pass);
+        	response.addCookie(user_cookie);
+        	response.addCookie(pass_cookie);
             RequestDispatcher rs = request.getRequestDispatcher("u_home.html");
             rs.forward(request, response);
         }

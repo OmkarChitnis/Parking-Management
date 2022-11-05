@@ -17,15 +17,8 @@ public class Welcome extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String user = request.getParameter("username");
-        String pass = request.getParameter("password");
         PrintWriter out = response.getWriter();
         out.println("<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">");
-        HttpSession sess = request.getSession();
-    	sess.setAttribute("username", user);
-    	sess.setAttribute("password", pass);
-    	Cookie c = new Cookie(user, pass);
-    	response.addCookie(c);
         out.println("<div class=\"toast\" role=\"alert\" aria-live=\"assertive\" aria-atomic=\"true\">\r\n"
         		+ "  <div class=\"toast-header\">\r\n"
         		+ "    <strong class=\"me-auto\">Welcome</strong>\r\n"
