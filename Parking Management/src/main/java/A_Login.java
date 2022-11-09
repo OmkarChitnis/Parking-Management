@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -41,9 +39,15 @@ public class A_Login extends HttpServlet {
         
         if(A_Validate.checkUser(user, pass))
         {
+        	Cookie admin_username = new Cookie("admin", user);
+        	Cookie admin_password = new Cookie("password",pass);
+        	admin_username.setMaxAge(60*60*24);
+        	admin_password.setMaxAge(60*60*24);
+        	response.addCookie(admin_username);
+        	response.addCookie(admin_password);
             RequestDispatcher rs = request.getRequestDispatcher("a_home.html");
             rs.forward(request, response);
-             
+            
         }
         else
         {

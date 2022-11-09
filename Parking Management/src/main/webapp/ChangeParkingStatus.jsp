@@ -11,7 +11,7 @@ pageEncoding="ISO-8859-1"%>
 <%! String driverName = "com.mysql.jdbc.Driver";%>
 <%!String url = "jdbc:mysql://localhost:3306/parkingmanagement";%>
 <%!String user = "root";%>
-<%!String psw = "mysql";%>
+<%!String psw = "Stormbreaker0811";%>
 <form action="ChangeParkingStatus">
 <%
 Connection con = null;

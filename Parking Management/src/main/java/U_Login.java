@@ -24,9 +24,11 @@ public class U_Login extends HttpServlet {
         {
         	Cookie user_cookie = new Cookie("user",user);
         	Cookie pass_cookie = new Cookie("pass",pass);
+        	user_cookie.setMaxAge(60*60*60*24);
+        	pass_cookie.setMaxAge(60*60*60*24);
         	response.addCookie(user_cookie);
         	response.addCookie(pass_cookie);
-            RequestDispatcher rs = request.getRequestDispatcher("u_home.html");
+        	RequestDispatcher rs = request.getRequestDispatcher("u_home.html");
             rs.forward(request, response);
         }
         else
