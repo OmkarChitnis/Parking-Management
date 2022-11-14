@@ -50,9 +50,12 @@ public class ChangeParkingStatus extends HttpServlet {
 		
 		try {
 
-			Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://upszsyyyksaxwnso:zvT431LkkJUz3qEf452q@bhhdo6ctnwedt2vk8miw-mysql.services.clever-cloud.com:3306/bhhdo6ctnwedt2vk8miw","upszsyyyksaxwnso","zvT431LkkJUz3qEf452q");  
+			//Class.forName("com.mysql.jdbc.Driver");
+            //Connection con = DriverManager.getConnection("jdbc:mysql://upszsyyyksaxwnso:zvT431LkkJUz3qEf452q@bhhdo6ctnwedt2vk8miw-mysql.services.clever-cloud.com:3306/bhhdo6ctnwedt2vk8miw","upszsyyyksaxwnso","zvT431LkkJUz3qEf452q");  
             
+			ConnectionDB.connect();
+        	Connection con = ConnectionDB.conn;
+			
             PreparedStatement ps = con.prepareStatement("update parkingspots set parking_counter=? where parking_name=?");
             ps.setInt(1, count);
             ps.setString(2, name);

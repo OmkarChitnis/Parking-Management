@@ -40,9 +40,12 @@ public class Show_Parking_Status extends HttpServlet {
         String status;
         try 
         {  
-        	Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://upszsyyyksaxwnso:zvT431LkkJUz3qEf452q@bhhdo6ctnwedt2vk8miw-mysql.services.clever-cloud.com:3306/bhhdo6ctnwedt2vk8miw","upszsyyyksaxwnso","zvT431LkkJUz3qEf452q");  
+        	//Class.forName("com.mysql.jdbc.Driver");
+            //Connection con = DriverManager.getConnection("jdbc:mysql://upszsyyyksaxwnso:zvT431LkkJUz3qEf452q@bhhdo6ctnwedt2vk8miw-mysql.services.clever-cloud.com:3306/bhhdo6ctnwedt2vk8miw","upszsyyyksaxwnso","zvT431LkkJUz3qEf452q");  
               
+        	ConnectionDB.connect();
+        	Connection con = ConnectionDB.conn;
+        	
             java.sql.Statement stmt = con.createStatement();  
             ResultSet rs = stmt.executeQuery("select parking_name, parking_capacity, parking_used, parking_counter from parkingspots");  
             out.println("<table border=1 width=50% height=50%>");  
