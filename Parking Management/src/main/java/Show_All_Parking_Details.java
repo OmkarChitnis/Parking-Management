@@ -40,11 +40,8 @@ public class Show_All_Parking_Details extends HttpServlet {
         //boolean st =false;
         try {
 
-            //loading drivers for mysql
-            Class.forName("com.mysql.jdbc.Driver");
-
-            //creating connection with the database
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingmanagement","root","mysql");
+        	Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://upszsyyyksaxwnso:zvT431LkkJUz3qEf452q@bhhdo6ctnwedt2vk8miw-mysql.services.clever-cloud.com:3306/bhhdo6ctnwedt2vk8miw","upszsyyyksaxwnso","zvT431LkkJUz3qEf452q");  
             
             java.sql.Statement stmt = con.createStatement();
             

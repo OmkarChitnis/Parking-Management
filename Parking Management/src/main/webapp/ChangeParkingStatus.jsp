@@ -14,7 +14,7 @@ pageEncoding="ISO-8859-1"%>
 <%!String psw = "Stormbreaker0811";%>
 <form action="ChangeParkingStatus">
 <%
-Connection con = null;
+ConnectionDB con = null;
 PreparedStatement ps = null;
 try
 {
@@ -22,7 +22,7 @@ Class.forName(driverName);
 con = DriverManager.getConnection(url,user,psw);
 String sql = "SELECT * FROM parkingspots";
 ps = con.prepareStatement(sql);
-ResultSet rs = ps.executeQuery(); 
+ResultSet rs = ps.executeQuery();
 %>
 
 <p>Select Parking Name :
