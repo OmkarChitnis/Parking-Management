@@ -12,7 +12,7 @@ public static Connection conn = null;
 
 public static Connection connect()
 {
-	Properties props = new Properties();
+	//Properties props = new Properties();
 	try
     {
         Class.forName("com.mysql.jdbc.Driver");  

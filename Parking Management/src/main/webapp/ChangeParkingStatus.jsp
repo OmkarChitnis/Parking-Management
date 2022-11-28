@@ -8,21 +8,18 @@ pageEncoding="ISO-8859-1"%>
 <title>Parking Spots</title>
 </head>
 <body>
-<%! String driverName = "com.mysql.jdbc.Driver";%>
-<%!String url = "jdbc:mysql://localhost:3306/parkingmanagement";%>
-<%!String user = "root";%>
-<%!String psw = "Stormbreaker0811";%>
 <form action="ChangeParkingStatus">
+
 <%
-ConnectionDB con = null;
 PreparedStatement ps = null;
 try
 {
-Class.forName(driverName);
-con = DriverManager.getConnection(url,user,psw);
-String sql = "SELECT * FROM parkingspots";
-ps = con.prepareStatement(sql);
-ResultSet rs = ps.executeQuery();
+	ConnectionDB.connect();
+	Connection con = ConnectionDB.conn;
+	
+	String sql = "SELECT * FROM parkingspots";
+	ps = con.prepareStatement(sql);
+	ResultSet rs = ps.executeQuery();
 %>
 
 <p>Select Parking Name :
