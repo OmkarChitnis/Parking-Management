@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,9 +39,10 @@ public class ChangeParkingStatus extends HttpServlet {
         PrintWriter out = response.getWriter();
         
 		String status = request.getParameter("parking_status");
+		System.out.println(status);
 		String statusFull = "Full";
-		
 		String name = request.getParameter("parking_name");
+		System.out.println(name);
 		if(status.equals(statusFull)) {
 			count=1;
 		}

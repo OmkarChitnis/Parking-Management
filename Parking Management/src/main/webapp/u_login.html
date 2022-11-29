@@ -5,6 +5,136 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <title>u_login</title>
+    <style>
+      /* Basics */
+      html, body {
+      width: 100%;
+      height: 100%;
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
+      color: #444;
+      -webkit-font-smoothing: antialiased;
+      background: #f0f0f0;
+      }
+      #container {
+      position: fixed;
+      width: 340px;
+      height: 280px;
+      top: 50%;
+      left: 50%;
+      margin-top: -140px;
+      margin-left: -170px;
+      background: #fff;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+      }
+      form {
+      margin: 0 auto;
+      margin-top: 20px;
+      }
+      label {
+      color: #555;
+      display: inline-block;
+      margin-left: 18px;
+      padding-top: 10px;
+      font-size: 14px;
+      }
+      p a {
+      font-size: 11px;
+      color: #aaa;
+      float: right;
+      margin-top: -13px;
+      margin-right: 20px;
+      -webkit-transition: all .4s ease;
+      -moz-transition: all .4s ease;
+      transition: all .4s ease;
+      }
+      p a:hover {
+      color: #555;
+      }
+      input {
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 12px;
+      outline: none;
+      }
+      input[type=text],
+      input[type=password] ,input[type=time]{
+      color: #777;
+      padding-left: 10px;
+      margin: 10px;
+      margin-top: 12px;
+      margin-left: 18px;
+      width: 290px;
+      height: 35px;
+      border: 1px solid #c7d0d2;
+      border-radius: 2px;
+      box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #f5f7f8;
+      -webkit-transition: all .4s ease;
+      -moz-transition: all .4s ease;
+      transition: all .4s ease;
+      }
+      input[type=text]:hover,
+      input[type=password]:hover,input[type=time]:hover {
+      border: 1px solid #b6bfc0;
+      box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px #f5f7f8;
+      }
+      input[type=text]:focus,
+      input[type=password]:focus,input[type=time]:focus {
+      border: 1px solid #a8c9e4;
+      box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #e6f2f9;
+      }
+      #lower {
+      background: #ecf2f5;
+      width: 100%;
+      height: 69px;
+      margin-top: 20px;
+      box-shadow: inset 0 1px 1px #fff;
+      border-top: 1px solid #ccc;
+      border-bottom-right-radius: 3px;
+      border-bottom-left-radius: 3px;
+      }
+      input[type=checkbox] {
+      margin-left: 20px;
+      margin-top: 30px;
+      }
+      .check {
+      margin-left: 3px;
+      font-size: 11px;
+      color: #444;
+      text-shadow: 0 1px 0 #fff;
+      }
+      input[type=submit] {
+      float: right;
+      margin-right: 20px;
+      margin-top: 20px;
+      width: 80px;
+      height: 30px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #acd6ef; /*IE fallback*/
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#6ec2e8));
+      background-image: -moz-linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
+      background-image: linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
+      border-radius: 30px;
+      border: 1px solid #66add6;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);
+      cursor: pointer;
+      }
+      input[type=submit]:hover {
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#b6e2ff), to(#6ec2e8));
+      background-image: -moz-linear-gradient(top left 90deg, #b6e2ff 0%, #6ec2e8 100%);
+      background-image: linear-gradient(top left 90deg, #b6e2ff 0%, #6ec2e8 100%);
+      }
+      input[type=submit]:active {
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#6ec2e8), to(#b6e2ff));
+      background-image: -moz-linear-gradient(top left 90deg, #6ec2e8 0%, #b6e2ff 100%);
+      background-image: linear-gradient(top left 90deg, #6ec2e8 0%, #b6e2ff 100%);
+      }
+      footer{
+        height: 0.5rem;
+      }
+   </style>
     <link rel="stylesheet" href="nicepage.css" media="screen">
 <link rel="stylesheet" href="u_login.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
@@ -24,7 +154,7 @@
     <meta property="og:type" content="website">
   </head>
   <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-80e9"><div class="u-clearfix u-sheet u-sheet-1">
-        <a href="/Home.html" class="u-image u-logo u-image-1" data-image-width="458" data-image-height="105" title="Home">
+        <a href="Home.html" class="u-image u-logo u-image-1" data-image-width="458" data-image-height="105" title="Home">
           <img src="/images/Logo.png" class="u-logo-image u-logo-image-1">
         </a>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -36,11 +166,11 @@
             </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Parking_Management/Home.html" style="padding: 10px 20px;">Home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Parking_Management/About.html" style="padding: 10px 20px;">About</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Parking_Management/Parking-Availability.html" style="padding: 10px 20px;">Parking-Availability</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" style="padding: 10px 20px;">Login</a><div class="u-nav-popup"><ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="Parking_Management/a_login.html">Admin Login</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="Parking_Management/u_login.html">User Login</a>
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Home.html" style="padding: 10px 20px;">Home</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="About.html" style="padding: 10px 20px;">About</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Parking-Availability.html" style="padding: 10px 20px;">Parking-Availability</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" style="padding: 10px 20px;">Login</a><div class="u-nav-popup"><ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="a_login.html">Admin Login</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="u_login.html">User Login</a>
 </li></ul>
 </div>
 </li></ul>
@@ -49,11 +179,11 @@
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Parking_Management/Home.html">Home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Parking_Management/About.html">About</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Parking_Management/Parking-Availability.html">Parking-Availability</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link">Login</a><div class="u-nav-popup"><ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-4"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Parking_Management/a_login.html">Admin Login</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Parking_Management/u_login.html">User Login</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html">About</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Parking-Availability.html">Parking-Availability</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link">Login</a><div class="u-nav-popup"><ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-4"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="a_login.html">Admin Login</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="u_login.html">User Login</a>
 </li></ul>
 </div>
 </li></ul>
@@ -66,11 +196,26 @@
     <section class="u-clearfix u-container-align-center u-section-1" id="sec-308d">
       <div class="u-clearfix u-sheet u-sheet-1"></div>
     </section>
-    
-    
+    <div id="container">
+      <form action="U_Login" method="post">
+         <label for="loginmsg" style="color:hsla(0,100%,50%,0.5); font-family:'Helvetica Neue',Helvetica,sans-serif;"></label>
+         <label for="username">Username:</label>
+         <input type="text" id="username" name="username">
+         <label for="password">Password:</label>
+         <input type="password" id="password" name="password">
+         <div id="lower">
+            <input type="checkbox" name="rememberme"><label class="check" for="checkbox">Keep me logged in</label>
+            <input type="submit" value="Login">
+         </div>
+      </form>
+   </div>
+   <br>
+   <br>
+   
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-220b"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
-      </div></footer>
+      </div>
+    </footer>
     <section class="u-backlink u-clearfix u-grey-80">
       <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
         <span>Website Templates</span>
