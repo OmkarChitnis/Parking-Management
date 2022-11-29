@@ -48,20 +48,19 @@ public class Delete_Parking extends HttpServlet {
             
         	ConnectionDB.connect();
         	Connection con = ConnectionDB.conn;
+        	PreparedStatement ps_id = con.prepareStatement("delete from parkingspots where parking_id=?");
+            PreparedStatement ps_name = con.prepareStatement("delete from parkingspots where parking_name=?");
         	
         	if(!id.equals(nullString)) {
-        		PreparedStatement ps = con.prepareStatement("delete from parkingspots where parking_id=?");
-                ps.setString(1, id);
+                ps_id.setString(1, id);
         	}
         	
         	else if(!name.equals(nullString)) {
-        		PreparedStatement ps = con.prepareStatement("delete from parkingspots where parking_name=?");
-                ps.setString(1, name);
+                ps_name.setString(1, name);
         	}
-            
-            
-            int count = ps.executeUpdate();
-            if(count>0) {
+            int countid = ps_id.executeUpdate();
+            int countname = ps_name.executeUpdate();
+            if(countid>0 || countname>0) {
             	out.println("Parking Deleted Successfully");
             }
             else {
