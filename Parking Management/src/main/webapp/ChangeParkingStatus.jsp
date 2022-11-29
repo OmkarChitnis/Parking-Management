@@ -40,7 +40,7 @@ pageEncoding="ISO-8859-1"%>
           <div class="u-custom-menu u-nav-container">
             <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="User-Home.html" style="padding: 10px 20px;">User Home</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" style="padding: 10px 20px;">Change Password</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" style="padding: 10px 20px;">Logout</a>
+</li><li class="u-nav-item"><a href="U_Logout" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" style="padding: 10px 20px;">Logout</a>
 </li></ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">

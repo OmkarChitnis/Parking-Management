@@ -28,7 +28,7 @@ public class U_Login extends HttpServlet {
         	pass_cookie.setMaxAge(60*60*60*24);
         	response.addCookie(user_cookie);
         	response.addCookie(pass_cookie);
-        	RequestDispatcher rs = request.getRequestDispatcher("u_home.html");
+        	RequestDispatcher rs = request.getRequestDispatcher("ChangeParkingStatus.jsp");
             rs.forward(request, response);
         }
         else

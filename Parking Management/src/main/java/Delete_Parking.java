@@ -37,6 +37,9 @@ public class Delete_Parking extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String nullString = "Null"
+        
         
         try {
 
@@ -45,6 +48,8 @@ public class Delete_Parking extends HttpServlet {
             
         	ConnectionDB.connect();
         	Connection con = ConnectionDB.conn;
+        	
+        	if(id.equals())
         	
             PreparedStatement ps = con.prepareStatement("delete from parkingspots where parking_id=?");
             ps.setString(1, id);
