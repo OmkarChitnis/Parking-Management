@@ -26,6 +26,7 @@ public class ChangeParkingStatus extends HttpServlet {
     public ChangeParkingStatus() {
         super();
         // TODO Auto-generated constructor stub
+        //ChangeParkingStatus Comment
     }
 
 	/**
