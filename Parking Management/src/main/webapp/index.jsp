@@ -20,7 +20,7 @@ public void redirecttoadminhome(HttpServletRequest req,HttpServletResponse resp)
 response.setContentType("text/html");
 try{
 	Class.forName("com.mysql.jdbc.Driver");
-	ConnectionDB conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingmanagement","root","Stormbreaker0811");
+	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingmanagement","root","Stormbreaker0811");
 	String user_query = "SELECT U_USERNAME FROM USER;";
 	String admin_query = "SELECT A_USERNAME FROM ADMIN;";
 	Cookie[] c = request.getCookies();

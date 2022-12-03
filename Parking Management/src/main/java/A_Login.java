@@ -51,7 +51,7 @@ public class A_Login extends HttpServlet {
         }
         else
         {
-           out.println("Username or Password incorrect");
+           out.println("<script>alert('Username or password incorrect.');</script>");
            RequestDispatcher rs = request.getRequestDispatcher("index.html");
            rs.include(request, response);
         }

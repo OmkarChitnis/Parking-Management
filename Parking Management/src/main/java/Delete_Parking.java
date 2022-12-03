@@ -35,12 +35,9 @@ public class Delete_Parking extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
         String id = request.getParameter("id");
         String name = request.getParameter("name");
-        String nullString = "Null";
-        
-        
+        String nullString = "null";
         try {
 
         	//Class.forName("com.mysql.jdbc.Driver");
@@ -51,16 +48,19 @@ public class Delete_Parking extends HttpServlet {
         	PreparedStatement ps_id = con.prepareStatement("delete from parkingspots where parking_id=?");
             PreparedStatement ps_name = con.prepareStatement("delete from parkingspots where parking_name=?");
         	
-        	if(!id.equals(nullString)) {
-                ps_id.setString(1, id);
+        	if(id.equals(nullString) && name.equals(nullString)) {
+                out.println("<script type='text/javascript'>"
+                		+ "alert('Please enter id and name.');"
+                		+ "</script>");
         	}
-        	
-        	else if(!name.equals(nullString)) {
+        	else if(!id.equals(nullString) && !name.equals(nullString)) {
+        		ps_id.setString(1, id);
                 ps_name.setString(1, name);
         	}
             int countid = ps_id.executeUpdate();
             int countname = ps_name.executeUpdate();
             if(countid>0 || countname>0) {
+            	
             	out.println("Parking Deleted Successfully");
             }
             else {
