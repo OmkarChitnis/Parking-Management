@@ -187,17 +187,19 @@
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <div class="u-form u-form-1">
           <div id="container">
-         <form action="Delete_Parking" method="post">
+         <form action="Delete_Parking" method="post" onsubmit="return confirm('Are you sure you want to delete?')">
             <label for="loginmsg" style="color:hsla(0,100%,50%,0.5); font-family:'Helvetica Neue',Helvetica,sans-serif;"><?php  echo @$_GET['msg'];?></label>
             <label for="username">Enter Parking ID:</label>
             <input type="text" id="id" name="id">
-            <label for="password">Enter Parking Name:</label>
-            <input type="text" id="name" name="name">
+            <label for="name">Enter Parking Name:</label>
+            <input type="text" id="parking-name" name="name">
             <div id="lower">
                <input type="submit" value="Delete">
             </div>
             <!--/ lower-->
          </form>
+         <script type="text/javascript">
+        </script>
       </div>
         </div>
       </div>

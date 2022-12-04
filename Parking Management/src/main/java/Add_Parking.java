@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -59,8 +61,12 @@ public class Add_Parking extends HttpServlet {
             ps.setString(4, capacity);
             ps.setString(5, used);
             
-            ps.executeUpdate();
-            out.println("Parking Added Successfully");
+            int i = ps.executeUpdate();
+            if(i==1) {
+            	RequestDispatcher rd = request.getRequestDispatcher("addparking.html");
+            	rd.include(request, response);
+            	out.println("<script>alert('Parking Added Successfully')</script>");
+            }
         }
         catch(Exception e) {
             e.printStackTrace();

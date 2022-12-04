@@ -1,18 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"
+    import = "java.sql.*"%>
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Change Parking Status">
+    <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>Admin Home</title>
+    <title>Show All Parking</title>
+    <%response.setIntHeader("Refresh", 1); %>
     <link rel="stylesheet" href="nicepage2.css" media="screen">
-<link rel="stylesheet" href="Admin-Home.css" media="screen">
+<link rel="stylesheet" href="Show-All-Parking.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery2.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage2.js" defer=""></script>
     <meta name="generator" content="Nicepage 5.0.7, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-    
-    
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -20,7 +22,7 @@
 		"logo": "images/default-logo.png"
 }</script>
     <meta name="theme-color" content="#478ac9">
-    <meta property="og:title" content="Admin Home">
+    <meta property="og:title" content="Show All Parking">
     <meta property="og:type" content="website">
   </head>
   <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-e46e"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
@@ -55,29 +57,53 @@
           </div>
         </nav>
       </div></header>
-    <section class="u-clearfix u-section-1" id="sec-10cf">
-      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <div class="u-expanded-width u-list u-list-1">
-          <div class="u-repeater u-repeater-1">
-            <div class="u-container-style u-list-item u-repeater-item">
-              <div class="u-container-layout u-similar-container u-container-layout-1">
-                <p class="u-text u-text-default u-text-1">Add Parking Spot</p>
-                <a href="addparking.html" class="u-border-2 u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-base u-none u-radius-50 u-btn-1">Add</a>
-              </div>
-            </div>
-            <div class="u-container-style u-list-item u-repeater-item">
-              <div class="u-container-layout u-similar-container u-container-layout-2">
-                <p class="u-text u-text-default u-text-2">Delete Parking Spot</p>
-                <a href="deleteparking.html" class="u-border-2 u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-base u-none u-radius-50 u-btn-2">DELETE</a>
-              </div>
-            </div>
-            <div class="u-container-style u-list-item u-repeater-item">
-              <div class="u-container-layout u-similar-container u-container-layout-3">
-                <p class="u-text u-text-default u-text-3">Show All Parking Spot Details</p>
-                <a href="ShowAllParking.jsp" class="u-border-2 u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-base u-none u-radius-50 u-btn-3">SHOW DETAILS</a>
-              </div>
-            </div>
-          </div>
+    <section class="u-align-center u-clearfix u-section-1" id="sec-ec54">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-table u-table-responsive u-table-1">
+        <table class="u-table-entity">
+            <colgroup>
+              <col width="20%">
+              <col width="20%">
+              <col width="20%">
+              <col width="20%">
+              <col width="20%">
+            </colgroup>
+            <tbody class="u-table-body">
+              <tr style="height: 46px;">
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell">Parking ID</td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell">Parking Name</td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell">Parking Location</td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell">Parking Capacity</td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell">Parking Used</td>
+              </tr>
+        <%
+        try{
+        	Class.forName("com.mysql.jdbc.Driver");
+        	String url="jdbc:mysql://upszsyyyksaxwnso:zvT431LkkJUz3qEf452q@bhhdo6ctnwedt2vk8miw-mysql.services.clever-cloud.com:3306/bhhdo6ctnwedt2vk8miw";
+        	String user = "upszsyyyksaxwnso";
+        	String pass = "zvT431LkkJUz3qEf452q";
+        	Connection conn = DriverManager.getConnection(url,user,pass);
+        	System.out.println("Connection Success.");
+        	String query = "SELECT * FROM parkingspots;";
+        	Statement stmt = conn.createStatement();
+        	ResultSet rs = stmt.executeQuery(query);
+        	while(rs.next()){
+        %>
+              <tr style="height: 46px;">
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell"><% out.println(rs.getInt(1)); %></td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell"><% out.println(rs.getInt(2)); %></td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell"><% out.println(rs.getInt(3)); %></td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell"><% out.println(rs.getInt(4)); %></td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell"><% out.println(rs.getInt(5)); %></td>
+              </tr>
+              <%
+        			}
+        		}catch(Exception e){
+        			System.out.println("Connection Failed due to following error: "+e.getMessage());
+        		}
+              %>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>

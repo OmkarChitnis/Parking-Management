@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -60,8 +61,9 @@ public class Delete_Parking extends HttpServlet {
             int countid = ps_id.executeUpdate();
             int countname = ps_name.executeUpdate();
             if(countid>0 || countname>0) {
-            	
-            	out.println("Parking Deleted Successfully");
+            	RequestDispatcher rd = request.getRequestDispatcher("deleteparking.html");
+            	rd.include(request, response);
+            	out.println("<script>alert('Parking Deleted Successfully');</script>");
             }
             else {
             	out.println("Parking Doesn't Exists");

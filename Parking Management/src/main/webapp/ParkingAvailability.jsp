@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"
+    import = "java.sql.*"%>
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +15,7 @@
     <meta name="generator" content="Nicepage 5.0.7, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i">
-    
+    <%response.setIntHeader("Refresh",1); %>
     
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
@@ -68,28 +71,48 @@
       <div class="u-clearfix u-sheet u-sheet-1">
         <h2 class="u-custom-font u-font-source-sans-pro u-text u-text-1">Parking Spots Availability</h2>
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
+          <%
+        try{
+        	Class.forName("com.mysql.jdbc.Driver");
+        	String url="jdbc:mysql://upszsyyyksaxwnso:zvT431LkkJUz3qEf452q@bhhdo6ctnwedt2vk8miw-mysql.services.clever-cloud.com:3306/bhhdo6ctnwedt2vk8miw";
+        	String user = "upszsyyyksaxwnso";
+        	String pass = "zvT431LkkJUz3qEf452q";
+        	Connection conn = DriverManager.getConnection(url,user,pass);
+        	System.out.println("Connection Success.");
+        	String query = "SELECT * FROM parkingspots;";
+        	Statement stmt = conn.createStatement();
+        	ResultSet rs = stmt.executeQuery(query);
+        	while(rs.next()){
+        %>
           <table class="u-table-entity">
             <colgroup>
-              <col width="25%">
-              <col width="25%">
-              <col width="25%">
-              <col width="25%">
+              <col width="20%">
+              <col width="20%">
+              <col width="20%">
+              <col width="20%">
+              <col width="20%">
             </colgroup>
-            <thead class="u-palette-5-dark-3 u-table-header u-table-header-1">
-              <tr style="height: 70px;">
-                <th class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-palette-5-dark-1 u-table-cell u-table-cell-1">Parking name</th>
-                <th class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-palette-5-dark-1 u-table-cell u-table-cell-2">parking location</th>
-                <th class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-palette-5-dark-1 u-table-cell u-table-cell-3">parking spots available</th>
-                <th class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-palette-5-dark-1 u-table-cell u-table-cell-4">parking capacity</th>
+            <tbody class="u-table-body">
+              <tr style="height: 46px;">
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell">Parking ID</td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell">Parking Name</td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell">Parking Location</td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell">Parking Capacity</td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell">Parking Used</td>
               </tr>
-            </thead>
-            <tbody class="u-black u-table-body u-table-body-1">
-              <tr style="height: 66px;">
-                <td class="u-border-1 u-border-palette-5-dark-1 u-table-cell u-table-cell-5"></td>
-                <td class="u-border-1 u-border-palette-5-dark-1 u-table-cell u-table-cell-6"></td>
-                <td class="u-border-1 u-border-palette-5-dark-1 u-table-cell u-table-cell-7"></td>
-                <td class="u-border-1 u-border-palette-5-dark-1 u-table-cell u-table-cell-8"></td>
+              <tr style="height: 46px;">
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell"><% out.println(rs.getInt(1)); %></td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell"><% out.println(rs.getInt(2)); %></td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell"><% out.println(rs.getInt(3)); %></td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell"><% out.println(rs.getInt(4)); %></td>
+                <td class="u-border-1 u-border-grey-dark-1 u-table-cell"><% out.println(rs.getInt(5)); %></td>
               </tr>
+              <%
+        			}
+        		}catch(Exception e){
+        			System.out.println("Connection Failed due to following error: "+e.getMessage());
+        		}
+              %>
             </tbody>
           </table>
         </div>
