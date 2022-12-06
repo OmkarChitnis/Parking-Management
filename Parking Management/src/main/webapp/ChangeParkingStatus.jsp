@@ -59,7 +59,7 @@ pageEncoding="ISO-8859-1"%>
       </div></header>
     <section class="u-clearfix u-section-1" id="sec-8d79">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <form action="ChangeParkingStatus">
+        <form action="ChangeParkingStatus" onsubmit="return confirm('Are you sure you want to update?')">
         <%
         PreparedStatement ps = null;
         try

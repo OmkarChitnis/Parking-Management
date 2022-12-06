@@ -45,7 +45,7 @@ public class A_Login extends HttpServlet {
         	admin_password.setMaxAge(60*60*24);
         	response.addCookie(admin_username);
         	response.addCookie(admin_password);
-            RequestDispatcher rs = request.getRequestDispatcher("a_home.html");
+            RequestDispatcher rs = request.getRequestDispatcher("Admin-Home.html");
             rs.forward(request, response);
             
         }

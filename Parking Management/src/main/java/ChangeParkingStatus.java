@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -65,7 +66,9 @@ public class ChangeParkingStatus extends HttpServlet {
             ps.setString(2, name);
             
             ps.executeUpdate();
-            out.println("Parking Status Updated Successfully");
+            RequestDispatcher rd = request.getRequestDispatcher("ChangeParkingStatus.jsp");
+            rd.include(request, response);
+            out.println("<script>alert('Parking Status Updated.');</script>");
         }
         catch(Exception e) {
             e.printStackTrace();

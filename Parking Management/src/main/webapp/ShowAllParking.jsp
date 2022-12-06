@@ -98,6 +98,7 @@
               </tr>
               <%
         			}
+        	conn.close();
         		}catch(Exception e){
         			System.out.println("Connection Failed due to following error: "+e.getMessage());
         		}

@@ -71,20 +71,10 @@
       <div class="u-clearfix u-sheet u-sheet-1">
         <h2 class="u-custom-font u-font-source-sans-pro u-text u-text-1">Parking Spots Availability</h2>
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
-          <%
-        try{
-        	Class.forName("com.mysql.jdbc.Driver");
-        	String url="jdbc:mysql://upszsyyyksaxwnso:zvT431LkkJUz3qEf452q@bhhdo6ctnwedt2vk8miw-mysql.services.clever-cloud.com:3306/bhhdo6ctnwedt2vk8miw";
-        	String user = "upszsyyyksaxwnso";
-        	String pass = "zvT431LkkJUz3qEf452q";
-        	Connection conn = DriverManager.getConnection(url,user,pass);
-        	System.out.println("Connection Success.");
-        	String query = "SELECT * FROM parkingspots;";
-        	Statement stmt = conn.createStatement();
-        	ResultSet rs = stmt.executeQuery(query);
-        	while(rs.next()){
+        <%!
+        Connection conn = null;
         %>
-          <table class="u-table-entity">
+        <table class="u-table-entity">
             <colgroup>
               <col width="20%">
               <col width="20%">
@@ -100,6 +90,19 @@
                 <td class="u-border-1 u-border-grey-dark-1 u-table-cell">Parking Capacity</td>
                 <td class="u-border-1 u-border-grey-dark-1 u-table-cell">Parking Used</td>
               </tr>
+          <%
+        try{
+        	Class.forName("com.mysql.jdbc.Driver");
+        	String url="jdbc:mysql://upszsyyyksaxwnso:zvT431LkkJUz3qEf452q@bhhdo6ctnwedt2vk8miw-mysql.services.clever-cloud.com:3306/bhhdo6ctnwedt2vk8miw";
+        	String user = "upszsyyyksaxwnso";
+        	String pass = "zvT431LkkJUz3qEf452q";
+        	conn = DriverManager.getConnection(url,user,pass);
+        	System.out.println("Connection Success.");
+        	String query = "SELECT * FROM parkingspots;";
+        	Statement stmt = conn.createStatement();
+        	ResultSet rs = stmt.executeQuery(query);
+        	while(rs.next()){
+        %>
               <tr style="height: 46px;">
                 <td class="u-border-1 u-border-grey-dark-1 u-table-cell"><% out.println(rs.getInt(1)); %></td>
                 <td class="u-border-1 u-border-grey-dark-1 u-table-cell"><% out.println(rs.getInt(2)); %></td>
@@ -109,8 +112,11 @@
               </tr>
               <%
         			}
-        		}catch(Exception e){
-        			System.out.println("Connection Failed due to following error: "+e.getMessage());
+        	    		}catch(Exception e){
+        			System.out.println("Connection Failed due to following error: ");
+        			e.printStackTrace();
+        		}finally{
+        			conn.close();
         		}
               %>
             </tbody>
